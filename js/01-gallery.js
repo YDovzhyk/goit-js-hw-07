@@ -40,19 +40,14 @@ galleryListEl.addEventListener('click', event => {
     instance.show()
 
     
-    document.addEventListener('keydown', event => {
+    document.addEventListener('keydown', onEscClick); 
+    function onEscClick (event) {
         if (event.code !== 'Escape') {
             return;
         } 
-        closeModalWindow ();
-        });
-
-    const closeModalWindow = event => {
         instance.close();
-        document.removeEventListener('keydown', event => {
-            // console.log("Keydown: ", event);
-        });
-    }
+        document.removeEventListener('keydown', onEscClick);
+        };
 });
 
 
